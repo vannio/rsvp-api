@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827191623) do
+ActiveRecord::Schema.define(version: 20170827195323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,40 @@ ActiveRecord::Schema.define(version: 20170827191623) do
     t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
+  create_table "rsvps", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.integer "adults"
+    t.integer "children"
+    t.text "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_rsvps_on_event_id"
+    t.index ["user_id"], name: "index_rsvps_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
     t.string "phone"
     t.bigint "address_id"
     t.integer "party_size", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.index ["address_id"], name: "index_users_on_address_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "venues", force: :cascade do |t|
@@ -59,6 +83,8 @@ ActiveRecord::Schema.define(version: 20170827191623) do
   end
 
   add_foreign_key "events", "venues"
+  add_foreign_key "rsvps", "events"
+  add_foreign_key "rsvps", "users"
   add_foreign_key "users", "addresses"
   add_foreign_key "venues", "addresses"
 end
