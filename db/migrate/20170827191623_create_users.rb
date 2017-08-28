@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :phone
       t.references :address, foreign_key: true
-      t.integer :party_size, default: 1
+      t.integer :max_party_size, default: 1
 
       t.timestamps
     end

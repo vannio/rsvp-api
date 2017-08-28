@@ -1,89 +1,68 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-addresses = [
+addresses = Address.create([
   {
-    id: 1,
     street: 'Clifton Vale',
     city: 'Bristol',
     postcode: 'BS8 4ST',
     country: 'United Kingdom'
   },
   {
-    id: 2,
     street: 'Narrow Lewins Mead',
     city: 'Bristol',
     postcode: 'BS1 2NN',
     country: 'United Kingdom'
   },
   {
-    id: 3,
     street: 'Seven Sisters Road',
     city: 'London',
     postcode: 'N4',
     country: 'United Kingdom'
   }
-]
+])
 
-Address.create(addresses)
-
-venues = [
+venues = Venue.create([
   {
-    id: 1,
     name: 'Holy Trinity Church (Hotwells)',
     url: 'http://www.holytrinityhotwells.org',
-    address_id: 1
+    address: addresses[0]
   },
   {
-    id: 2,
     name: 'The Emmanuel Meeting House',
     url: 'https://emmanuelbristol.org.uk',
-    address_id: 2
+    address: addresses[1]
   }
-]
+])
 
-Venue.create(venues)
-
-events = [
+events = Event.create([
   {
-    id: 1,
     title: 'Ceremony',
     date: 'Mon, 29 May 2017',
     time: '2000-01-01 13:00:00 UTC',
-    venue_id: 1
+    venue: venues[0]
   },
   {
-    id: 2,
     title: 'Reception',
     date: 'Mon, 29 May 2017',
     time: '2000-01-01 16:00:00 UTC',
-    venue_id: 2
+    venue: venues[1]
   }
-]
+])
 
-Event.create(events)
-
-users = [
+users = User.create([
   {
     first_name: 'Van',
     last_name: 'Le',
     email: 'van@getting.married',
-    party_size: 2,
+    max_party_size: 2,
     password: 'gettingmarried',
     password_confirmation: 'gettingmarried',
     admin: true,
-    address_id: 3
+    address: addresses[2]
   },
   {
     first_name: 'Sarah',
     last_name: 'Simmons',
     email: 'sl.simmons@getting.married',
-    party_size: 2,
+    max_party_size: 2,
     password: 'gettingmarried',
     password_confirmation: 'gettingmarried',
     admin: true
@@ -102,35 +81,31 @@ users = [
     password: 'gettingmarried',
     password_confirmation: 'gettingmarried'
   }
-]
+])
 
-User.create(users)
-
-rsvps = [
+rsvps = Rsvp.create([
   {
-    user_id: 1,
-    event_id: 1
+    user: users[0],
+    event: events[0]
   },
   {
-    user_id: 1,
-    event_id: 2
+    user: users[0],
+    event: events[1]
   },
   {
-    user_id: 2,
-    event_id: 1
+    user: users[1],
+    event: events[0]
   },
   {
-    user_id: 2,
-    event_id: 2
+    user: users[1],
+    event: events[1]
   },
   {
-    user_id: 3,
-    event_id: 2
+    user: users[2],
+    event: events[1]
   },
   {
-    user_id: 4,
-    event_id: 2
+    user: users[3],
+    event: events[1]
   }
-]
-
-Rsvp.create(rsvps)
+])
