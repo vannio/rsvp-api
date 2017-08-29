@@ -32,9 +32,16 @@ module RsvpApi
 
     # To make sure jwt will work, the contents of the lib directory have to be
     # included when the Rails application loads
-    config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
 
     # Graphql
     config.autoload_paths << Rails.root.join('app', 'types')
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
