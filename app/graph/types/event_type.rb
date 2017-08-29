@@ -4,9 +4,15 @@ module Types
 
     field :id, types.Int
     field :title, types.String
-    field :datetime, types.String
     field :venue_id, types.Int
     field :venue, Types::VenueType
+    field :datetime do
+      type types.String
+
+      resolve -> (obj, args, ctx) {
+        obj.datetime.iso8601
+      }
+    end
     field :rsvps do
       type types[Types::RsvpType]
       resolve -> (obj, args, ctx) {

@@ -7,6 +7,7 @@ module Types
     field :last_name, types.String
     field :email, types.String
     field :phone, types.String
+    field :max_party_size, types.Int
     field :admin,
       types.Boolean,
       description: 'Admins have full read/write access'

@@ -24,7 +24,7 @@ gem 'simple_command'
 gem 'active_model_serializers'
 gem 'graphql', '~> 1.0.0'
 
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', require: 'rack/cors'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
