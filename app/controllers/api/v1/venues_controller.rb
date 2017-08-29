@@ -1,11 +1,13 @@
 module Api::V1
   class VenuesController < BaseController
     before_action :authenticate_request, only: [:create, :update, :destroy]
+    before_action :authenticate_admin, only: [:create, :update, :destroy]
     before_action :set_venue, only: [:show, :update, :destroy]
+    before_action :set_event, if: -> { params[:event_id].present? }
 
     # GET /venues
     def index
-      @venues = Venue.all
+      @venues = @event ? [*@event.venue] : Venue.all
 
       render json: @venues
     end
@@ -49,6 +51,10 @@ module Api::V1
       # Only allow a trusted parameter "white list" through.
       def venue_params
         params.require(:venue).permit(:name, :url, :description, :address_id)
+      end
+
+      def set_event
+        @event = Event.find(params[:event_id])
       end
   end
 end

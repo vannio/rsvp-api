@@ -1,6 +1,7 @@
 module Api::V1
   class EventsController < BaseController
     before_action :authenticate_request, only: [:create, :update, :destroy]
+    before_action :authenticate_admin, only: [:create, :update, :destroy]
     before_action :set_event, only: [:show, :update, :destroy]
 
     # GET /events
@@ -12,14 +13,7 @@ module Api::V1
 
     # GET /events/1
     def show
-      # TODO: Use serializer
-      render json: @event.slice(:id, :title, :date, :time).merge({
-        venue: @event.venue
-          .slice(:id, :name, :url, :description)
-          .merge({
-            address: @event.venue.try(:address).try(:slice, :id, :street, :city, :postcode, :country, :lat, :lng)
-          })
-        })
+      render json: @event
     end
 
     # POST /events
@@ -34,6 +28,16 @@ module Api::V1
     end
 
     # PATCH/PUT /events/1
+    # {
+    #   "event": {
+    #     "venue_attributes": {
+    #       "id": 3,
+    #       "address_attributes": {
+    #         "id": 14
+    #       }
+    #     }
+    #   }
+    # }
     def update
       if @event.update(event_params)
         render json: @event
@@ -55,7 +59,11 @@ module Api::V1
 
       # Only allow a trusted parameter "white list" through.
       def event_params
-        params.require(:event).permit(:title, :date, :time, :venue_id)
+        params.require(:event).permit(:title, :date, :time,
+          venue_attributes: [:id, :name, :url, :description,
+            address_attributes: [:id, :street, :city, :postcode, :country, :lat, :lng]
+          ]
+        )
       end
   end
 end

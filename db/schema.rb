@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170828120430) do
     t.string "last_name"
     t.string "phone"
     t.string "email"
+    t.boolean "admin", default: false
     t.bigint "address_id"
     t.integer "max_party_size", default: 1
     t.datetime "created_at", null: false

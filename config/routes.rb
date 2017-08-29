@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   concern :api_base do
     post 'authenticate', to: 'authentication#authenticate'
     root to: "home#index"
-    resources :addresses
-    resources :rsvps, only: [:index]
     resources :users do
-      resources :rsvps, except: [:index]
+      resources :rsvps
+      resources :addresses
     end
     resources :events do
-      resources :venues
+      resources :rsvps
+      resources :venues do
+        resources :addresses
+      end
     end
   end
 
