@@ -4,8 +4,7 @@ module Types
 
     field :id, types.Int
     field :title, types.String
-    field :date, types.String
-    field :time, types.String
+    field :datetime, types.String
     field :venue_id, types.Int
     field :venue, Types::VenueType
     field :rsvps do

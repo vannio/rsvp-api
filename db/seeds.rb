@@ -35,14 +35,12 @@ venues = Venue.create([
 events = Event.create([
   {
     title: 'Ceremony',
-    date: 'Mon, 29 May 2017',
-    time: '2000-01-01 13:00:00 UTC',
+    datetime: '2018-07-01T14:00',
     venue: venues[0]
   },
   {
     title: 'Reception',
-    date: 'Mon, 29 May 2017',
-    time: '2000-01-01 16:00:00 UTC',
+    datetime: '2018-07-01T17:00',
     venue: venues[1]
   }
 ])

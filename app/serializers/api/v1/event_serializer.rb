@@ -1,5 +1,5 @@
 module Api::V1
   class EventSerializer < ActiveModel::Serializer
-    attributes :id, :title, :date, :time, :venue_id
+    attributes :id, :title, :datetime, :venue_id
   end
 end
