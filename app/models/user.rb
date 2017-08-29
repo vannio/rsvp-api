@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :address, optional: true
   has_many :rsvps, dependent: :destroy
   has_many :events, through: :rsvps

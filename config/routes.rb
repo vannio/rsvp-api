@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'authenticate', to: 'authentication#authenticate'
   root to: "home#index"
   resources :addresses
   resources :users do
