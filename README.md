@@ -1,24 +1,8 @@
-# README
+# RSVP on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+👰🤵<br>
+An API to handle RSVPs for a friend's wedding. Also playing with GraphQL whilst I'm at it:
 
-Things you may want to cover:
+![GraphiQL example](/screenshots/GraphiQL.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+_Query example via GraphiQL_

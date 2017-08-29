@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   concern :api_base do
+    post 'graphql', to: 'graphql#create'
     post 'authenticate', to: 'authentication#authenticate'
-    root to: "home#index"
+    root to: 'home#index'
     resources :users do
       resources :rsvps
       resources :addresses

@@ -22,6 +22,7 @@ gem 'jwt'
 gem 'simple_command'
 
 gem 'active_model_serializers'
+gem 'graphql', '~> 1.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

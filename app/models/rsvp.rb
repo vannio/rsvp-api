@@ -5,4 +5,6 @@ class Rsvp < ApplicationRecord
   def responded?
     self.created_at < self.updated_at
   end
+
+  alias responded responded?
 end
