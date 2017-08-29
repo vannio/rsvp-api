@@ -53,23 +53,31 @@ users = User.create([
     last_name: 'Le',
     email: 'van@getting.married',
     max_party_size: 2,
-    address: addresses[2]
+    address: addresses[2],
+    password: 'gettingmarried',
+    password_confirmation: 'gettingmarried'
   },
   {
     first_name: 'Sarah',
     last_name: 'Simmons',
     email: 'sl.simmons@getting.married',
-    max_party_size: 2
+    max_party_size: 2,
+    password: 'gettingmarried',
+    password_confirmation: 'gettingmarried'
   },
   {
     first_name: 'John',
     last_name: 'Smith',
-    email: 'johnsmith@email.com'
+    email: 'johnsmith@email.com',
+    password: 'gettingmarried',
+    password_confirmation: 'gettingmarried'
   },
   {
     first_name: 'Jane',
     last_name: 'Smith',
-    email: 'janesmith@email.com'
+    email: 'janesmith@email.com',
+    password: 'gettingmarried',
+    password_confirmation: 'gettingmarried'
   }
 ])
 
