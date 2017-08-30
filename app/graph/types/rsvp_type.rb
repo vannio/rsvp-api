@@ -11,18 +11,20 @@ module Types
     field :adults, types.Int
     field :children, types.Int
     field :comments, types.String
+
     field :updated_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.updated_at.to_i
+      resolve -> (rsvp, args, context) {
+        rsvp.updated_at.to_i
       }
     end
+
     field :created_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.created_at.to_i
+      resolve -> (rsvp, args, context) {
+        rsvp.created_at.to_i
       }
     end
   end

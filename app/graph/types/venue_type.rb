@@ -8,18 +8,20 @@ module Types
     field :name, types.String
     field :description, types.String
     field :url, types.String
+
     field :updated_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.updated_at.to_i
+      resolve -> (venue, args, context) {
+        venue.updated_at.to_i
       }
     end
+
     field :created_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.created_at.to_i
+      resolve -> (venue, args, context) {
+        venue.created_at.to_i
       }
     end
   end

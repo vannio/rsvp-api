@@ -3,10 +3,14 @@ module Types
     name "Query"
 
     field :viewer do
+      description "Takes a JSON web token as an argument to authenticate queries"
       argument :token, types.String
-      type Types::ViewerType
-      resolve -> (obj, args, ctx) {
-        ctx[:authorize_api_req].call({ Authorization: args[:token] }).result || User.new
+      type Types::QueryViewerType
+
+      resolve -> (query, args, context) {
+        current_user = context[:authorize_api_req].call({ Authorization: args[:token] }).result || User.new
+        context[:current_user] = current_user
+        current_user
       }
     end
   end

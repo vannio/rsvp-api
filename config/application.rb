@@ -35,7 +35,7 @@ module RsvpApi
     config.eager_load_paths << Rails.root.join('lib')
 
     # Graphql
-    config.autoload_paths << Rails.root.join('app', 'types')
+    config.autoload_paths << Rails.root.join('app', 'graph', 'types')
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do

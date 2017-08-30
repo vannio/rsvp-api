@@ -6,7 +6,8 @@ module Api::V1
         variables: query_variables,
         context: {
           authenticate_user: AuthenticateUser,
-          authorize_api_req: AuthorizeApiRequest
+          authorize_api_req: AuthorizeApiRequest,
+          auth_error_msg: "Not Authorized"
         }
       )
     end

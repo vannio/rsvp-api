@@ -9,18 +9,20 @@ module Types
     field :country, types.String
     field :lat, types.String
     field :lng, types.String
+
     field :updated_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.updated_at.to_i
+      resolve -> (address, args, context) {
+        address.updated_at.to_i
       }
     end
+
     field :created_at do
       type types.Int
 
-      resolve -> (obj, args, ctx) {
-        obj.created_at.to_i
+      resolve -> (address, args, context) {
+        address.created_at.to_i
       }
     end
   end
