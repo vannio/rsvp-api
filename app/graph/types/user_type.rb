@@ -8,9 +8,7 @@ module Types
     field :email, types.String
     field :phone, types.String
     field :max_party_size, types.Int
-    field :admin,
-      types.Boolean,
-      description: 'Admins have full read/write access'
+    field :admin, types.Boolean, description: "Admins have full read/write access"
     field :rsvps do
       type types[Types::RsvpType]
       resolve -> (obj, args, ctx) {

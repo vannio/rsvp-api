@@ -6,7 +6,7 @@ class AuthorizeApiRequest
   end
 
   def call
-    user
+    @current_user = user
   end
 
   private
@@ -23,8 +23,8 @@ class AuthorizeApiRequest
   end
 
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+    if headers[:Authorization].present?
+      return headers[:Authorization].split(' ').last
     else
       errors.add(:token, 'Missing token')
     end
