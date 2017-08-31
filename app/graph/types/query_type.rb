@@ -8,9 +8,9 @@ module Types
       type Types::QueryViewerType
 
       resolve -> (query, args, context) {
+        return context[:current_user] if context[:current_user].present?
         current_user = context[:authorize_api_req].call({ Authorization: args[:token] }).result || User.new
         context[:current_user] = current_user
-        current_user
       }
     end
   end
