@@ -27,8 +27,7 @@ module Api::V1
     # 		"address_attributes": {},
     # 	  "rsvps_attributes": []
     # 	},
-    # 	"password": "gettingmarried",
-    # 	"password_confirmation": "gettingmarried"
+    # 	"password": "gettingmarried"
     # }
     def create
       @user = User.new(user_params)
@@ -75,7 +74,7 @@ module Api::V1
       # Only allow a trusted parameter "white list" through.
       def user_params
         params.require(:user).permit(
-          :first_name, :last_name, :email, :phone, :max_party_size, :password, :password_confirmation,
+          :first_name, :last_name, :email, :phone, :max_party_size, :password,
           address_attributes: [:id, :street, :city, :postcode, :country],
           rsvps_attributes: [:id, :event_id, :user_id, :adults, :children, :comments]
         )
