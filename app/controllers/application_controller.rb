@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_request
     @current_user = AuthorizeApiRequest.call(request.headers).result
+    return @current_user if request.path.include? "/graphql"
     render_auth_error unless @current_user
   end
 
