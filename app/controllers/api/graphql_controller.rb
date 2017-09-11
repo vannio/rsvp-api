@@ -1,5 +1,5 @@
-module Api::V1
-  class GraphqlController < BaseController
+module Api
+  class GraphqlController < ApplicationController
     before_action :authenticate_request
 
     def create

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   concern :api_base do
-    post 'graphql', to: 'graphql#create'
     post 'authenticate', to: 'authentication#authenticate'
     root to: 'home#index'
     resources :users do
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    post 'graphql', to: 'graphql#create'
     namespace :v1 do
       concerns :api_base
     end
