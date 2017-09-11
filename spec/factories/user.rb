@@ -1,16 +1,24 @@
 FactoryGirl.define do
-  factory :user do
-    first_name "John"
-    last_name "Smith"
-    email "johnsmith@email.com"
+  factory :user, class: User do
+    first_name "Hugh"
+    last_name "Jass"
+    email "hjass@getting.married"
+    password "gettingmarried"
+    admin false
+  end
+
+  factory :user2, class: User do
+    first_name "Ben"
+    last_name "Dover"
+    email "bend@getting.married"
     password "gettingmarried"
     admin false
   end
 
   factory :admin, class: User do
-    first_name "Van"
-    last_name "Le"
-    email "van@getting.married"
+    first_name "I.P."
+    last_name "Freely"
+    email "ipfreely@getting.married"
     password "gettingmarried"
     admin true
   end

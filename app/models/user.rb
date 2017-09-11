@@ -8,7 +8,4 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
-  validates :first_name, :last_name, format: {
-    with: /[a-zA-Z]+/, message: "Only letters are accepted"
-  }
 end

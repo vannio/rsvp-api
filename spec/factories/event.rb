@@ -1,16 +1,12 @@
 FactoryGirl.define do
   factory :ceremony, class: Event do
+    before(:create) { |event| event.venue = FactoryGirl.create(:church_venue) }
     title "Ceremony"
-    before(:create) do |event|
-      event.venue = FactoryGirl.create(:church_venue)
-    end
   end
 
   factory :church_venue, class: Venue do
+    before(:create) { |venue| venue.address = FactoryGirl.create(:church_address) }
     name 'Holy Trinity Church (Hotwells)'
-    before(:create) do |venue|
-      venue.address = FactoryGirl.create(:church_address)
-    end
   end
 
   factory :church_address, class: Address do
